@@ -1,32 +1,32 @@
 # This project gives you a suggested course of action based on the weather in your city
 
-from flask import Flask
-from flask import request
+#from flask import Flask
+#from flask import request
 import json
 import requests
 import math
 from dotenv import load_dotenv
 import os
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
-@app.route("/")
-def index():
-    city = request.args.get("city")
-    if city:
-        suggestion = main(city)
-    else:
-        suggestion = "waiting for input"
-    return ( """<h1>Today's Weather Suggestion</h1>
-             <form action="" method="get">
-                <input type="text" name="city">
-                <input type="submit" value="Suggest!">
-              </form>"""
-              + "Suggestion: <br/>"
-              + suggestion
-    )
+# @app.route("/")
+# def index():
+#     city = request.args.get("city")
+#     if city:
+#         suggestion = main(city)
+#     else:
+#         suggestion = "waiting for input"
+#     return ( """<h1>Today's Weather Suggestion</h1>
+#              <form action="" method="get">
+#                 <input type="text" name="city">
+#                 <input type="submit" value="Suggest!">
+#               </form>"""
+#               + "Suggestion: <br/>"
+#               + suggestion
+#     )
 
-@app.route("/")
+# @app.route("/")
 def main(city):
     load_dotenv()
 
@@ -89,8 +89,8 @@ def advice(descr, tmp):
             answer = suggestions[keyword]
             break
     
-    # answer += "\n"  # doesn't work?
-    answer += "<br/>"
+    # answer += "\n"
+    # answer += "<br/>"
         
     if tmp <= 10:
         answer += "The temperature is " + t + "°F. Make sure to bundle up with some gloves and a jacket."
@@ -106,6 +106,6 @@ def advice(descr, tmp):
     return answer
 
 
-if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)
+#if __name__ == "__main__":
+    #app.run(host="127.0.0.1", port=8080, debug=True)
     # main()
